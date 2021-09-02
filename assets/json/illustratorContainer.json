@@ -1,0 +1,21 @@
+{
+  "illustrationPage":[{
+    "ImageUrl":"assets/photos/illustrationPic/cashPayment.jpg",
+    "title":"Manage your schedule",
+    "subText":"Manage your medicine pills as you want,and you can choose when its done or choose it as it permenet medicine."
+
+  },
+    {
+      "ImageUrl":"assets/photos/illustrationPic/cashPayment.jpg",
+      "title":"Forgot to buy?",
+      "subText":"Not any more, you will be reminded to buy the medicine before it runout."
+
+    },
+    {
+      "ImageUrl":"assets/photos/illustrationPic/timeManage.jpg",
+      "title":"No more foretting",
+      "subText":"if you took a nap or didnt hear the reminder dont worry, there is message will be sent to one of your closed person to remind you."
+
+    }
+  ]
+}
