@@ -16,6 +16,9 @@ class _MedicinePageState extends State<MedicinePage> {
     const titleFont = TextStyle( fontFamily: 'englishFont',fontSize:17,fontWeight: FontWeight.w100,height: 2.3,color: Color.fromARGB(255,199, 199, 199));
     return SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+            title: Text('Medicines'),
+          ),
           body: Row(
       children: [
           Expanded(
@@ -116,7 +119,12 @@ class _MedicinePageState extends State<MedicinePage> {
                 ],
               ),
                   SizedBox(height: 30,),
-              InputScreen(),
+              Row(
+                children: [
+                  InputScreen(),
+
+                ],
+              ),
             ],
           ))
       ],

@@ -1,9 +1,12 @@
 
 import 'package:fakarny_app/components/rounded_loading_indecator.dart';
+import 'package:fakarny_app/reuseables/buttons.dart';
 import 'package:fakarny_app/reuseables/headTitle.dart';
 import 'package:fakarny_app/reuseables/popUp.dart';
 import 'package:fakarny_app/reuseables/settingsContainer.dart';
 import 'package:flutter/material.dart';
+
+import 'medicinePage.dart';
 
 class MainPageTablet extends StatefulWidget {
   const MainPageTablet({Key? key}) : super(key: key);
@@ -161,7 +164,6 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                                   .headline6),
                                         ],
                                       ),
-                                      popUpScreen(context: context ,formKey: _formKey)
                                     ],
                                   ),
                                 )
@@ -231,7 +233,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                                   .headline4),
                                         ],
                                       ),
-                                      popUpScreen(context: context , formKey: _formKey)
+
                                     ],
                                   ),
                                 )
@@ -246,6 +248,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                         //you took so far
                         Container(
                           alignment: AlignmentDirectional.topStart,
+                          height: 225,
                           width: 330,
                           child: Card(
                             color: Color.fromARGB(255, 11, 64, 156),
@@ -269,7 +272,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                 ),
                                 // medicine you took
                                 Container(
-                                  height: 85,
+                                  height: 225,
                                   width: 300,
                                   child: Row(
                                     mainAxisAlignment:
@@ -282,10 +285,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                           shrinkWrap: true,
                                           itemCount: 12,
                                           itemBuilder: (context, index) {
-                                            return Text('BreakFast',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyText1);
+                                            return medicinePopUp(context: context, formKey: _formKey);
                                           },
                                           separatorBuilder:
                                               (BuildContext context,
@@ -303,7 +303,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                 ),
 
                                 // see more button
-                                popUpScreen(context: context,formKey: _formKey)
+                                textMaterialBtn(buttonTextName: "More Info", textBtnFunc: (){}, containerMargin: 5,containerAlignment: Alignment.bottomRight)
                               ],
                             ),
                           ),
@@ -370,7 +370,6 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                                   .headline4),
                                         ],
                                       ),
-                                      popUpScreen(context: context,formKey: _formKey)
                                     ],
                                   ),
                                 )
@@ -432,26 +431,14 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                                     itemCount: 8,
                                                     itemBuilder:
                                                         (context, index) {
-                                                      return InkWell(
-                                                        onTap: (){},
-                                                        child: Container(
-                                                          child: Row(
-                                                            children: [
-                                                              CircleAvatar(
-                                                                radius: 25,
-                                                              backgroundColor:Colors.transparent ,
-                                                              child: Image.asset('assets/photos/googleLogIn.png',fit: BoxFit.cover,),
-                                                                 ),
-                                                              SizedBox(width: 12,),
-                                                              Text('antinal')
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      );
+                                                       return medicinePopUp(context: context, formKey: _formKey);
+
                                                     }),
                                               ),
                                             ),
-                                            popUpScreen(context: context,formKey: _formKey)                                          ],
+                                            textMaterialBtn(buttonTextName: "More info", textBtnFunc: (){
+                                              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const MedicinePage()));
+                                            }, containerMargin: 2,containerAlignment: Alignment.bottomRight)                 ],
                                         ),
                                       ),
                                     );
@@ -509,26 +496,13 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                                     itemCount: 8,
                                                     itemBuilder:
                                                         (context, index) {
-                                                      return InkWell(
-                                                        onTap: (){},
-                                                        child: Container(
-                                                          child: Row(
-                                                            children: [
-                                                              CircleAvatar(
-                                                                radius: 25,
-                                                                backgroundColor:Colors.transparent ,
-                                                                child: Image.asset('assets/photos/googleLogIn.png',fit: BoxFit.cover,),
-                                                              ),
-                                                              SizedBox(width: 12,),
-                                                              Text('antinal')
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      );
+                                                      return medicinePopUp(context: context, formKey: _formKey);
                                                     }),
                                               ),
                                             ),
-                                            InputScreen()                              ],
+                                            textMaterialBtn(buttonTextName: "More info", textBtnFunc: (){
+                                              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const MedicinePage()));
+                                            }, containerMargin: 2,containerAlignment: Alignment.bottomRight)                        ],
                                         ),
                                       ),
                                     );

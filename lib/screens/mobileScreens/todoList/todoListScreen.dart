@@ -39,7 +39,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
     //                 ,),
     // ],
     //           ),
-              child: textMaterialBtn(buttonTextName: '+ Add New Appointment', textBtnFunc: (){popUpScreen(context: context ,formKey: _formKey);}, containerMargin: 5,defaultColor: true),
+              child: textMaterialBtn(buttonTextName: '+ Add New Appointment', textBtnFunc: (){}, containerMargin: 5,defaultColor: true),
             )
           ],
     ),

@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
         if(constraints.minWidth.toInt() <= 500)
 
           return ChooseLang();
-        return MedicinePage();
+        return MainPageTablet();
       })
     );
       
