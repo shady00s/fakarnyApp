@@ -16,6 +16,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
         body: SafeArea(
       child: SingleChildScrollView(
@@ -160,7 +161,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                                   .headline6),
                                         ],
                                       ),
-                                      popUpScreen(context: context)
+                                      popUpScreen(context: context ,formKey: _formKey)
                                     ],
                                   ),
                                 )
@@ -230,7 +231,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                                   .headline4),
                                         ],
                                       ),
-                                      popUpScreen(context: context)
+                                      popUpScreen(context: context , formKey: _formKey)
                                     ],
                                   ),
                                 )
@@ -302,7 +303,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                 ),
 
                                 // see more button
-                                popUpScreen(context: context)
+                                popUpScreen(context: context,formKey: _formKey)
                               ],
                             ),
                           ),
@@ -369,7 +370,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                                   .headline4),
                                         ],
                                       ),
-                                      popUpScreen(context: context)
+                                      popUpScreen(context: context,formKey: _formKey)
                                     ],
                                   ),
                                 )
@@ -450,7 +451,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                                                     }),
                                               ),
                                             ),
-                                            popUpScreen(context: context)                                          ],
+                                            popUpScreen(context: context,formKey: _formKey)                                          ],
                                         ),
                                       ),
                                     );
