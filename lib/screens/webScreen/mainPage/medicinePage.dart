@@ -1,3 +1,4 @@
+import 'package:fakarny_app/reuseables/medicineCardName.dart';
 import 'package:fakarny_app/reuseables/popUp.dart';
 import 'package:flutter/material.dart';
 
@@ -33,18 +34,7 @@ class _MedicinePageState extends State<MedicinePage> {
                        separatorBuilder: (BuildContext context, int index) => const Divider(),
                        itemCount: 12,
                        itemBuilder: (BuildContext context, int index) {
-                       return Card(
-                         child: InkWell(
-                           onTap: (){},
-                           child: Padding(
-                             padding: const EdgeInsets.all(12.0),
-                             child: ListTile(
-                               title: Text("Insulin"),
-                              leading: Image(image: AssetImage('assets/photos/googleLogIn.png'),),
-                             ),
-                           ),
-                         ),
-                       );
+                       return medicineCardName();
                   },
                 ))
               ],

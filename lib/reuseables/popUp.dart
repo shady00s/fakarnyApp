@@ -1,4 +1,5 @@
 import 'package:fakarny_app/reuseables/textInput.dart';
+import 'package:fakarny_app/screens/webScreen/mainPage/medicinePage.dart';
 import 'package:flutter/material.dart';
 import 'buttons.dart';
 
@@ -92,128 +93,146 @@ class _InputScreenState extends State<InputScreen> {
   }
 }
 
+
+
+
+
+Future<dynamic>informationPopUp(context){
+  const titleFont = TextStyle(
+      fontFamily: 'englishFont',
+      fontSize: 17,
+      fontWeight: FontWeight.w100,
+      height: 2.3,
+      color: Color.fromARGB(255, 199, 199, 199));
+  const medicineFont = TextStyle(
+      fontFamily: 'englishFont',
+      fontSize: 19,
+      fontWeight: FontWeight.w300,
+      height: 2.1,
+      color: Color.fromARGB(255, 242, 247, 255));
+  return
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15)),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "insuline",
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.close))
+              ],
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image(
+                  image: AssetImage('assets/photos/googleLogIn.png'),
+                  width: 90,
+                  alignment: Alignment.center,
+                ),
+                SizedBox(
+                  height: 23,
+                ),
+                Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Medical Name:",
+                          style: titleFont,
+                        ),
+                        Text(
+                          "Duration:",
+                          style: titleFont,
+                        ),
+                        Text(
+                          "Dosage:",
+                          style: titleFont,
+                        ),
+                        Text(
+                          "How to Use? :",
+                          style: titleFont,
+                        ),
+                        Text(
+                          "remaining shot",
+                          style: titleFont,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Insulin",
+                          style: medicineFont,
+                        ),
+                        Text(
+                          "lifetime",
+                          style: medicineFont,
+                        ),
+                        Text(
+                          "1 shot before meal",
+                          style: medicineFont,
+                        ),
+                        Text(
+                          "one shot in the thig",
+                          style: medicineFont,
+                        ),
+                        Text(
+                          "remaining shot",
+                          style: medicineFont,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
+            actions: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  textMaterialBtn(
+                      buttonTextName: "More Info",
+                      textBtnFunc: () {
+                        Navigator.push(context, MaterialPageRoute(builder:( BuildContext context)=>MedicinePage()));
+                      },
+                      containerMargin: 2),
+                  textMaterialBtn(
+                      buttonTextName: "Edit",
+                      textBtnFunc: () {
+                        Navigator.pop(context);
+                        inputPopUp(context);
+                      },
+                      containerMargin: 2),
+                ],
+              )
+            ],
+          );
+        });
+
+
+}
+
+
+
 Widget medicinePopUp({required context, required formKey}) {
   return InkWell(
     onTap: () {
-      const medicineFont = TextStyle(
-          fontFamily: 'englishFont',
-          fontSize: 19,
-          fontWeight: FontWeight.w300,
-          height: 2.1,
-          color: Color.fromARGB(255, 242, 247, 255));
-      const titleFont = TextStyle(
-          fontFamily: 'englishFont',
-          fontSize: 17,
-          fontWeight: FontWeight.w100,
-          height: 2.3,
-          color: Color.fromARGB(255, 199, 199, 199));
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)),
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "insuline",
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(Icons.close))
-                ],
-              ),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image(
-                    image: AssetImage('assets/photos/googleLogIn.png'),
-                    width: 90,
-                    alignment: Alignment.center,
-                  ),
-                  SizedBox(
-                    height: 23,
-                  ),
-                  Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Medical Name:",
-                            style: titleFont,
-                          ),
-                          Text(
-                            "Duration:",
-                            style: titleFont,
-                          ),
-                          Text(
-                            "Dosage:",
-                            style: titleFont,
-                          ),
-                          Text(
-                            "How to Use? :",
-                            style: titleFont,
-                          ),
-                          Text(
-                            "remaining shot",
-                            style: titleFont,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Insulin",
-                            style: medicineFont,
-                          ),
-                          Text(
-                            "lifetime",
-                            style: medicineFont,
-                          ),
-                          Text(
-                            "1 shot before meal",
-                            style: medicineFont,
-                          ),
-                          Text(
-                            "one shot in the thig",
-                            style: medicineFont,
-                          ),
-                          Text(
-                            "remaining shot",
-                            style: medicineFont,
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ],
-              ),
-              actions: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    textMaterialBtn(
-                        buttonTextName: "More Info",
-                        textBtnFunc: () {},
-                        containerMargin: 2),
-                    textMaterialBtn(
-                        buttonTextName: "Edit",
-                        textBtnFunc: () {},
-                        containerMargin: 2),
-                  ],
-                )
-              ],
-            );
-          });
+        informationPopUp(context);
     },
     child: Container(
       child: Row(
@@ -267,6 +286,7 @@ class _AddNewWidgetState extends State<AddNewWidget> {
                         IconButton(
                             onPressed: () {
                               Navigator.pop(context);
+
                             },
                             icon: Icon(Icons.close))
                       ],
@@ -325,4 +345,34 @@ class _AddNewWidgetState extends State<AddNewWidget> {
         },
         containerMargin: 3);
   }
+}
+
+
+Future<dynamic>inputPopUp(
+   context
+)
+{
+  return showDialog(context: context, builder: (BuildContext context )
+  {
+    return AlertDialog(
+      content: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: Text('Editing',style: Theme.of(context).textTheme.headline3,),
+                ),
+                IconButton(onPressed: (){
+                  Navigator.pop(context);
+                }, icon: Icon(Icons.close))
+              ],
+            ),
+
+          ],
+        ),
+      ),
+    );
+  });
 }

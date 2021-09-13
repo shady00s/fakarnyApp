@@ -1,524 +1,363 @@
-
-import 'package:fakarny_app/components/rounded_loading_indecator.dart';
-import 'package:fakarny_app/reuseables/buttons.dart';
-import 'package:fakarny_app/reuseables/headTitle.dart';
+import 'package:fakarny_app/components/side_menu.dart';
 import 'package:fakarny_app/reuseables/popUp.dart';
-import 'package:fakarny_app/reuseables/settingsContainer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/svg.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'medicinePage.dart';
 
 class MainPageTablet extends StatefulWidget {
   const MainPageTablet({Key? key}) : super(key: key);
-
+ 
   @override
   _MainPageTabletState createState() => _MainPageTabletState();
 }
 
 class _MainPageTabletState extends State<MainPageTablet> {
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+    double containerHeight= 180;
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
+        appBar: screenSize.width < 1028 ? AppBar() : null,
+        drawer: Drawer(child: tabletSideNavBar(context: context)),
         body: SafeArea(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SettingsContainer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+          child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        // Greetings
-                        Container(
-                          alignment: AlignmentDirectional.topStart,
-                          width: 345,
-                          height: 220,
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            color: Colors.green,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    margin: EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 5),
-                                    child: Text(
-                                      'Welcome Mr safwat',
-                                      style: TextStyle(
-                                          color: Color.fromARGB(
-                                              255, 242, 247, 255),
-                                          fontSize: 28,
-                                          fontFamily: 'englishFont'),
-                                    )),
+                screenSize.width > 1030
+                ? Expanded(
+                    flex: 1, child: desktopSideNavBar(context: context))
+                : Container(
+                    width: 0,
+                  ),
+                Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 20),
 
-                                // child: headTitle(
-                                //     titleText: "Welcome Mr Safwat kamal" ,
-                                //     context: context)),
-                                Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 15, vertical: 5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Container(
-                                        child: Row(
-                                          children: [
-                                            Icon(Icons.access_time),
-                                            SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text('12:05 Am'),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        child: Row(
-                                          children: [
-                                            Icon(Icons.calendar_today),
-                                            SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text('wed , 12 ,march ,2020')
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-
-                        // Dosage
-                        Container(
-                          width: 330,
-                          child: Card(
-                            color: Colors.teal,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            elevation: 8,
-                            child: Column(
-                              children: [
-                                //title
-                                Container(
-                                  alignment: AlignmentDirectional.topStart,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, top: 8.0),
-                                    child: headTitle(
-                                        titleText: "Dosage Time:",
-                                        context: context,
-                                        textStyleTheme: Theme.of(context)
-                                            .textTheme
-                                            .headline1),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 12.0, right: 12.0, bottom: 12.0),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Antinal',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyText1,
-                                          ),
-                                          Text('40 min',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline5),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text('Voltarine',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1),
-                                          Text('1h : 20 min',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline6),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        //status
-                        Container(
-                          width: 330,
-                          child: Card(
-                            color: Colors.amber[700],
-                            elevation: 8,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Column(
-                              children: [
-                                //title
-                                Container(
-                                  alignment: AlignmentDirectional.topStart,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, top: 8.0),
-                                    child: headTitle(
-                                        titleText: "Medicine Status:",
-                                        context: context,
-                                        textStyleTheme: Theme.of(context)
-                                            .textTheme
-                                            .headline1),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 12.0, right: 12.0, bottom: 12.0),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Medicines needs to re-buy',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyText1,
-                                          ),
-                                          Text('10',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline3),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text('Medicine Deleted/Ended',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1),
-                                          Text('7',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline4),
-                                        ],
-                                      ),
-
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                    alignment: AlignmentDirectional.topStart,
+                    child: Text(
+                      'You took so far:',
+                      style: Theme.of(context).textTheme.headline3,
                     ),
-                    Column(
-                      children: [
-                        //you took so far
-                        Container(
-                          alignment: AlignmentDirectional.topStart,
-                          height: 225,
-                          width: 330,
-                          child: Card(
-                            color: Color.fromARGB(255, 11, 64, 156),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            elevation: 8,
-                            child: Column(
-                              children: [
-                                //You took title
-                                Container(
-                                  alignment: AlignmentDirectional.topStart,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: headTitle(
-                                        titleText: "You took so far:",
-                                        context: context,
-                                        textStyleTheme: Theme.of(context)
-                                            .textTheme
-                                            .headline1),
-                                  ),
-                                ),
-                                // medicine you took
-                                Container(
-                                  height: 225,
-                                  width: 300,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Expanded(
-                                        child: ListView.separated(
-                                          shrinkWrap: true,
-                                          itemCount: 12,
-                                          itemBuilder: (context, index) {
-                                            return medicinePopUp(context: context, formKey: _formKey);
-                                          },
-                                          separatorBuilder:
-                                              (BuildContext context,
-                                                      int index) =>
-                                                  const Divider(),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      roundedLoadingIdenticator(
-                                          percentageValue: 75)
-                                    ],
-                                  ),
-                                ),
-
-                                // see more button
-                                textMaterialBtn(buttonTextName: "More Info", textBtnFunc: (){}, containerMargin: 5,containerAlignment: Alignment.bottomRight)
-                              ],
-                            ),
+                  ),
+                  //Rounded progress bar
+                  Container(
+                    width: 230,
+                    height: 230,
+                    child: SfRadialGauge(axes: <RadialAxis>[
+                      RadialAxis(
+                          minimum: 0,
+                          maximum: 100,
+                          showLabels: false,
+                          showTicks: false,
+                          axisLineStyle: AxisLineStyle(
+                            thickness: 0.2,
+                            cornerStyle: CornerStyle.bothCurve,
+                            color: Color.fromARGB(30, 0, 169, 181),
+                            thicknessUnit: GaugeSizeUnit.factor,
                           ),
+                          pointers: <GaugePointer>[
+                            RangePointer(
+                              value: 30,
+                              cornerStyle: CornerStyle.bothCurve,
+                              width: 0.2,
+                              sizeUnit: GaugeSizeUnit.factor,
+                            )
+                          ],
+                          annotations: <GaugeAnnotation>[
+                            GaugeAnnotation(
+                                positionFactor: 0.1,
+                                angle: 90,
+                                widget: Text(
+                                  30.toStringAsFixed(0) + ' / 100',
+                                  style:
+                                      Theme.of(context).textTheme.headline3,
+                                ))
+                          ])
+                    ]),
+                  ),
+                  Container(
+                      width: double.infinity,
+                      height: 200,
+                      child: ListView.separated(
+                        separatorBuilder: (BuildContext context, int index) =>
+                            const Divider(
+                          height: 20,
                         ),
-                        //schedule
-                        Container(
-                          width: 330,
-                          child: Card(
-                            color: Colors.red[600],
-                            elevation: 8,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Column(
-                              children: [
-                                //title
-                                Container(
-                                  alignment: AlignmentDirectional.topStart,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, top: 8.0),
-                                    child: headTitle(
-                                        titleText: "Your Schedule:",
-                                        context: context,
-                                        textStyleTheme: Theme.of(context)
-                                            .textTheme
-                                            .headline1),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 12.0, right: 12.0, bottom: 12.0),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Dr ahmed',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyText1,
-                                          ),
-                                          Text('Monday',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline3),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text('Diabetes',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1),
-                                          Text('22/2',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .headline4),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        //medicine container
-                        Container(
-                          width: 300,
-                          height: 280,
-                          child: Card(
-                            color: Colors.deepPurple,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            elevation: 8,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: TweenAnimationBuilder(
-                                  tween: Tween<double>(begin: 0, end: 1),
-                                  duration: Duration(milliseconds: 300),
-                                  builder: (BuildContext context,
-                                      double value, Widget? child) {
-                                    return AnimatedOpacity(
-                                      opacity: value,
-                                      duration: Duration(milliseconds: 300),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Expanded(
-                                              flex:1,
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    'Medicines',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .headline1,
-                                                  ),
-                                                  // const Image(filterQuality:FilterQuality.high,
-                                                  //     width :80,image: AssetImage('assets/photos/icons/pillsIcon2.png'))
-                                                ],
-                                              ),
-                                            ),
-                                            Expanded(
-                                              flex:2,
-                                              child: Container(
-                                                child: ListView.separated(
-                                                  shrinkWrap: true,
-                                                    separatorBuilder:
-                                                        (context, index) =>
-                                                            const Divider(),
-                                                    itemCount: 8,
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                       return medicinePopUp(context: context, formKey: _formKey);
-
-                                                    }),
-                                              ),
-                                            ),
-                                            textMaterialBtn(buttonTextName: "More info", textBtnFunc: (){
-                                              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const MedicinePage()));
-                                            }, containerMargin: 2,containerAlignment: Alignment.bottomRight)                 ],
-                                        ),
-                                      ),
-                                    );
-                                  }),
-                            ),
-                          ),
-                        ),
-                        //group container
-                        Container(
-                          width: 300,
-                          height: 300,
-                          child: Card(
-                            color: Colors.pink[400],
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            elevation: 8,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: TweenAnimationBuilder(
-                                  tween: Tween<double>(begin: 0, end: 1),
-                                  duration: Duration(milliseconds: 300),
-                                  builder: (BuildContext context,
-                                      double value, Widget? child) {
-                                    return AnimatedOpacity(
-                                      opacity: value,
-                                      duration: Duration(milliseconds: 300),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Expanded(
-                                              flex:1,
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    'Medicine Groups',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .headline1,
-                                                  ),
-                                                  // const Image(filterQuality:FilterQuality.high,
-                                                  //     width :80,image: AssetImage('assets/photos/icons/pillsIcon2.png'))
-                                                ],
-                                              ),
-                                            ),
-                                            Expanded(
-                                              flex:2,
-                                              child: Container(
-                                                child: ListView.separated(
-                                                    shrinkWrap: true,
-                                                    separatorBuilder:
-                                                        (context, index) =>
-                                                    const Divider(),
-                                                    itemCount: 8,
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      return medicinePopUp(context: context, formKey: _formKey);
-                                                    }),
-                                              ),
-                                            ),
-                                            textMaterialBtn(buttonTextName: "More info", textBtnFunc: (){
-                                              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const MedicinePage()));
-                                            }, containerMargin: 2,containerAlignment: Alignment.bottomRight)                        ],
-                                        ),
-                                      ),
-                                    );
-                                  }),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                )
+                        itemBuilder: (BuildContext context, int index) {
+                          return medicinePopUp(
+                              context: context, formKey: _formKey);
+                        },
+                        shrinkWrap: true,
+                        itemCount: 8,
+                      )),
               ],
-            ),
-          ),
-        ),
-      ),
-    ));
+                  ),
+                )),
+                Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    //you took so far title
+
+                    Container(
+                     // height: containerHeight,
+                      width: 300,
+                      margin: EdgeInsets.all(20),
+                      child: Card(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: InkWell(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Padding(
+                              padding: EdgeInsets.all(12),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.topLeft,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          'Next Medicine:',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline1,
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text('Antinal'),
+                                            Text('42 min')
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text('Antinal'),
+                                            Text('42 min')
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    //schedule
+                    Container(
+                     // height: containerHeight,
+                      width: 300,
+                      margin: EdgeInsets.all(20),
+                      child: Card(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: InkWell(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Padding(
+                              padding: EdgeInsets.all(12),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.topLeft,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          'Your schedule:',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline1,
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text('Diabetus Lap'),
+                                            Text('23/2/2021')
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text('Dr hassan meeting'),
+                                            Text('22/2/2021')
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    //next medicine
+                    Container(
+                     // height: containerHeight,
+                      width: 300,
+                      margin: EdgeInsets.all(20),
+                      child: Card(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: InkWell(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Padding(
+                              padding: EdgeInsets.all(12),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.topLeft,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          'Medicine status:',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline1,
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text('Needs to re-buy:'),
+                                            Text('12')
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text('Edited/Deleted'),
+                                            Text('4')
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                     // height: containerHeight,
+                      width: 300,
+                      margin: EdgeInsets.all(20),
+                      child: Card(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: InkWell(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Padding(
+                              padding: EdgeInsets.all(12),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.topLeft,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          'Next Medicine:',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline1,
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text('Antinal'),
+                                            Text('42 min')
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text('Antinal'),
+                                            Text('42 min')
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                    //medicine status
+
+                    // re-buy medicine
+
+                    // next medicine
+
+                    // schedules
+                  ],
+                ),
+              ),
+                )
+              ])),
+        ));
   }
 }

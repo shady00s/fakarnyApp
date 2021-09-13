@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^0.22.0
   flutter_bloc: ^7.2.0
   responsive_grid: ^2.0.0
+  syncfusion_flutter_gauges: ^19.2.59
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,7 @@ flutter:
     - assets/json/
     - assets/photos/icons/
     - assets/photos/main/
+    - assets/svg/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
