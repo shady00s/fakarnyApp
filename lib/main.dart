@@ -1,9 +1,5 @@
-import 'dart:io';
-
-
 import 'package:fakarny_app/screens/mobileScreens/logIn_SignIn_Widgets/chooseLangMobile.dart';
 import 'package:fakarny_app/screens/webScreen/mainPage/mainPageDisktop.dart';
-import 'package:fakarny_app/screens/webScreen/mainPage/medicinePage.dart';
 import 'package:flutter/material.dart';
 void main() {
 

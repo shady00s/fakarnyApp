@@ -14,6 +14,7 @@ class _MedicineGroupState extends State<MedicineGroup> {
   GlobalKey _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('medicine Groups'),
@@ -64,10 +65,10 @@ class _MedicineGroupState extends State<MedicineGroup> {
                       child: Text("medicines",style: Theme.of(context).textTheme.headline2,),
                     ),
                     Container(
-                      width: double.infinity,
+                      width:screenSize.width  > 600 ? 650 :double.infinity,
                       height: 320,
                       child: GridView.count(
-                        childAspectRatio: 1.5,
+                        childAspectRatio:  screenSize.width > 600 ? 1.5 :8/4,
                         physics: BouncingScrollPhysics(),
                         shrinkWrap: true,
                         children:List.generate(12, (index) => Container(

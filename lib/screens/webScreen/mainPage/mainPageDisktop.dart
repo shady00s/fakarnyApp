@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fakarny_app/components/side_menu.dart';
 import 'package:fakarny_app/reuseables/popUp.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,6 +16,18 @@ class MainPageTablet extends StatefulWidget {
 }
 
 class _MainPageTabletState extends State<MainPageTablet> {
+  var date = DateTime.now();
+  @override
+  void initState() {
+    // TODO: implement initState
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        date = DateTime.now();
+      });
+    });
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +45,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                   children: [
                 screenSize.width > 1030
                 ? Expanded(
-                    flex: 1, child: desktopSideNavBar(context: context))
+                    flex: 1, child: desktopSideNavBar(context: context , timedate: date))
                 : Container(
                     width: 0,
                   ),
