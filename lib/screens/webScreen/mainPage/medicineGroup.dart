@@ -1,4 +1,5 @@
 import 'package:fakarny_app/reuseables/buttons.dart';
+import 'package:fakarny_app/reuseables/inputPopUp.dart';
 import 'package:fakarny_app/reuseables/medicineCardName.dart';
 import 'package:fakarny_app/reuseables/popUp.dart';
 import 'package:flutter/material.dart';
@@ -23,11 +24,23 @@ class _MedicineGroupState extends State<MedicineGroup> {
         child: Row(
           children: [
             Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: ListView.separated(separatorBuilder: (BuildContext context ,int index)=>const Divider(),itemBuilder: (BuildContext context,int index){
-                    return medicineCardName();
-                  },  itemCount: 12),
+                child: Column(
+                  children: [
+                    Container(
+
+                      child:InputPopUp(medicineName: 'Add new medicine', inputDataType: 'medicine',)
+                      ,
+                    ),
+                    Expanded(
+
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: ListView.separated(separatorBuilder: (BuildContext context ,int index)=>const Divider(),itemBuilder: (BuildContext context,int index){
+                          return medicineCardName();
+                        },  itemCount: 12),
+                      ),
+                    ),
+                  ],
                 )),
             Expanded(
               flex: 2,

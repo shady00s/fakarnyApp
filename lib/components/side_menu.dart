@@ -3,6 +3,7 @@ import 'package:fakarny_app/screens/webScreen/mainPage/medicineGroup.dart';
 import 'package:fakarny_app/screens/webScreen/mainPage/medicinePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 
 Widget desktopSideNavBar({
   required BuildContext context,
@@ -11,13 +12,9 @@ Widget desktopSideNavBar({
 }){
   var minute = timedate.minute;
   var hour = timedate.hour;
-  var month = timedate.weekday;
-  var day = timedate.weekday;
   var hVal =  hour > 12 ?   hour - 12 : hour;
-  var pmAm =  hour > 12 ?  "Am":"Pm";
+  var pmAm =  hour > 12 ?  "Pm":"Am";
   var minVal = minute < 12 ? "0" + minute.toString() : minute.toString();
-  int x = 0 ;
-
 
   return SingleChildScrollView(
     child: Column(children: [
@@ -77,7 +74,7 @@ Widget desktopSideNavBar({
                             SizedBox(
                               width: 10,
                             ),
-
+                             Text(DateFormat("EEE, d MMM y").format(DateTime.now()))
                           ],
                         ),
                       )
