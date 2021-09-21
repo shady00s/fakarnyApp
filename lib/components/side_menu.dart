@@ -1,15 +1,21 @@
 
+import 'package:camera/camera.dart';
 import 'package:fakarny_app/screens/webScreen/mainPage/medicineGroup.dart';
 import 'package:fakarny_app/screens/webScreen/mainPage/medicinePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
+import 'camera.dart';
+
 Widget desktopSideNavBar({
   required BuildContext context,
   required DateTime timedate
 
 }){
+
+
+
   var minute = timedate.minute;
   var hour = timedate.hour;
   var hVal =  hour > 12 ?   hour - 12 : hour;
@@ -147,7 +153,10 @@ Widget desktopSideNavBar({
               borderRadius: BorderRadius.circular(20.0)),
           color: Colors.pink[400],
           child: InkWell(
-            onTap:(){},
+
+            onTap:(){
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>CameraClass()));
+            },
             child: Row(children: [
               Text("Schedule"),
 

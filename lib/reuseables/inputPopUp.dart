@@ -118,6 +118,20 @@ class _InputPopUpState extends State<InputPopUp> {
                                   SizedBox(
                                     height: 30,
                                   ),
+                                  Text("Image File"),
+
+                                  Row(
+                                    children: [
+                                      Container(
+                                          width: 300,
+                                          child: textInput(labelText: "photos")),
+                                    
+                                    ],
+                                  ),
+
+                                  SizedBox(
+                                    height: 30,
+                                  ),
                                   textMaterialBtn(
                                       buttonTextName: "Submit",
                                       textBtnFunc: () {

@@ -134,7 +134,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        child: InkWell(
+                        child: InkResponse(
                           onTap: () {},
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
@@ -193,7 +193,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        child: InkWell(
+                        child: InkResponse(
                           onTap: () {},
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
@@ -252,7 +252,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        child: InkWell(
+                        child: InkResponse(
                           onTap: () {},
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
@@ -310,7 +310,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        child: InkWell(
+                        child: InkResponse(
                           onTap: () {},
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),

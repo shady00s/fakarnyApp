@@ -1,5 +1,3 @@
-
-import 'package:fakarny_app/dataBase/medicineInfo.dart';
 import 'package:fakarny_app/reuseables/categoriesList.dart';
 import 'package:fakarny_app/reuseables/expansionList.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +13,7 @@ class MedicineScreen extends StatefulWidget {
 class _MedicineScreenState extends State<MedicineScreen> {
   @override
   Widget build(BuildContext context) {
-    createData();
+
 
     return Padding(
       padding: const EdgeInsets.all(12.0),
