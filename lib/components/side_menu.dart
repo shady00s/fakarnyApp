@@ -1,5 +1,3 @@
-
-import 'package:camera/camera.dart';
 import 'package:fakarny_app/screens/webScreen/mainPage/medicineGroup.dart';
 import 'package:fakarny_app/screens/webScreen/mainPage/medicinePage.dart';
 import 'package:flutter/material.dart';
@@ -135,7 +133,7 @@ Widget desktopSideNavBar({
                 SvgPicture.asset('assets/svg/medicineGroupss.svg',width: 80,),
                 SizedBox(width: 20,),
                 FittedBox(
-                    child: Text("Medicines Groups",style: Theme.of(context).textTheme.headline2)),
+                    child: Text("Medicines  Groups",style: Theme.of(context).textTheme.headline2)),
 
               ],),
             ),
@@ -155,7 +153,7 @@ Widget desktopSideNavBar({
           child: InkWell(
 
             onTap:(){
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>CameraClass()));
+             // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>CameraClass()));
             },
             child: Row(children: [
               Text("Schedule"),

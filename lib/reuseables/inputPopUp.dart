@@ -1,3 +1,4 @@
+import 'package:fakarny_app/components/camera.dart';
 import 'package:fakarny_app/reuseables/buttons.dart';
 import 'package:fakarny_app/reuseables/textInput.dart';
 import 'package:flutter/material.dart';
@@ -121,11 +122,12 @@ class _InputPopUpState extends State<InputPopUp> {
                                   Text("Image File"),
 
                                   Row(
+                                    mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Container(
-                                          width: 300,
+                                          width:200,
                                           child: textInput(labelText: "photos")),
-                                    
+                                    CameraClass()
                                     ],
                                   ),
 
