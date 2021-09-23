@@ -1,7 +1,7 @@
 import 'package:fakarny_app/dataBase/dataBase.dart';
 import 'package:fakarny_app/global_vars.dart';
 import 'package:fakarny_app/reuseables/inputPopUp.dart';
-import 'package:fakarny_app/reuseables/medicineCardName.dart';
+//import 'package:fakarny_app/reuseables/medicineCardName.dart';
 import 'package:fakarny_app/reuseables/popUp.dart';
 import 'package:flutter/material.dart';
 
@@ -51,7 +51,25 @@ class _MedicinePageState extends State<MedicinePage> {
                        separatorBuilder: (BuildContext context, int index) => const Divider(),
                        itemCount:medicineMap.length,
                        itemBuilder: (BuildContext context, int index) {
-                       return medicineCardName(testName: index+1);
+                       return Card(
+                         child: InkWell(
+                           onTap: (){
+                                  setState(() {
+                                    medicineName = medicineMap[index]["medicine_name"];
+                                    medicineActiveName = medicineMap[index]["main_active_component"];
+                                    medicineDuration = medicineMap[index]["duration"];
+                                    pillsCount = medicineMap[index]["pills_count"];
+                                  });
+                           },
+                           child: Padding(
+                             padding: const EdgeInsets.all(12.0),
+                             child: ListTile(
+                               title: Text(medicineMap[index]["medicine_name"]),
+                               leading: Image(image: AssetImage('assets/photos/googleLogIn.png'),),
+                             ),
+                           ),
+                         ),
+                       );
                   },
                 ))
               ],
@@ -105,6 +123,7 @@ class _MedicinePageState extends State<MedicinePage> {
                     children: [
 
                       Text("Medical Name:",style: titleFont,),
+                      Text("Main Active material name:",style: titleFont,),
                       Text("Duration:",style: titleFont,),
                       Text("Dosage:",style: titleFont,),
                       Text("How to Use? :",style: titleFont,),
@@ -116,11 +135,12 @@ class _MedicinePageState extends State<MedicinePage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Insulin",style: medicineFont,),
-                      Text("lifetime",style: medicineFont,),
+                      Text("$medicineName",style: medicineFont,),
+                      Text("$medicineActiveName",style: medicineFont,),
+                      Text("$medicineDuration",style: medicineFont,),
                       Text("1 shot before meal",style: medicineFont,),
                       Text("one shot in the thig",style: medicineFont,),
-                      Text("remaining shot",style: medicineFont,),
+                      Text("$pillsCount",style: medicineFont,),
                     ],
                   )
                 ],

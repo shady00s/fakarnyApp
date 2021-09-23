@@ -4,7 +4,6 @@ Widget textInput(
     {required String labelText,
     TextEditingController? controller,
       type,
-
       bool? noKeyBoard,
     Function? onTap,
     Function? onChange,

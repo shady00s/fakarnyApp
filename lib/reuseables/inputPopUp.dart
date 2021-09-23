@@ -38,8 +38,8 @@ class _InputPopUpState extends State<InputPopUp> {
     final TextEditingController materialNameController =  TextEditingController();
     final TextEditingController durationController =  TextEditingController();
     final TextEditingController howtouseController =  TextEditingController();
-     //var numberOfPillsController =  TextEditingController();
-     //int numberOfPillsValue = int.parse('numberOfPillsController');
+     final TextEditingController numberOfPillsController =   TextEditingController();
+    // int  numberOfPillsValue = int.parse(numberOfPillsController.text,onError: (s)=> -1);
     final TextEditingController imagePathController =  TextEditingController();
 
 
@@ -136,7 +136,9 @@ class _InputPopUpState extends State<InputPopUp> {
                                   ),
                                   textInput(
                                       labelText: "Number of pills / shots:",
-                                      //controller: numberOfPillsController,
+                                      type: TextInputType.number,
+
+                                      controller: numberOfPillsController,
                                       validate: (value) {
                                         if (value == null || value.isEmpty) {
                                           return "Please enter the value.";
@@ -165,7 +167,7 @@ class _InputPopUpState extends State<InputPopUp> {
                                       buttonTextName: "Submit",
                                       textBtnFunc: () {
                                         if (_formKey.currentState!.validate()) {
-                                          x.addingManually(pillsCount: 3, medicinePic: imagePathController.text, mainActiveComponent: materialNameController.text, medicineName: medicineNameController.text, howToUse: howtouseController.text);
+                                          x.addingManually(pillsCount: 2, medicinePic: imagePathController.text, mainActiveComponent: materialNameController.text, medicineName: medicineNameController.text, howToUse: howtouseController.text);
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(const SnackBar(
                                                   content:

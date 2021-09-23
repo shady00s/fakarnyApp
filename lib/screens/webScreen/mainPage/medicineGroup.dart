@@ -4,6 +4,8 @@ import 'package:fakarny_app/reuseables/medicineCardName.dart';
 import 'package:fakarny_app/reuseables/popUp.dart';
 import 'package:flutter/material.dart';
 
+import '../../../global_vars.dart';
+
 class MedicineGroup extends StatefulWidget {
   const MedicineGroup({Key? key}) : super(key: key);
 
@@ -36,7 +38,7 @@ class _MedicineGroupState extends State<MedicineGroup> {
                       child: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: ListView.separated(separatorBuilder: (BuildContext context ,int index)=>const Divider(),itemBuilder: (BuildContext context,int index){
-                          return medicineCardName(testName: index);
+                          return medicineCardName(data: medicineMap[index]);
                         },  itemCount: 12),
                       ),
                     ),
