@@ -1,3 +1,6 @@
+import 'package:fakarny_app/dataBase/dataBase.dart';
+import 'package:fakarny_app/global_vars.dart';
+import 'package:fakarny_app/reuseables/inputPopUp.dart';
 import 'package:fakarny_app/reuseables/medicineCardName.dart';
 import 'package:fakarny_app/reuseables/popUp.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +13,17 @@ class MedicinePage extends StatefulWidget {
 }
 
 class _MedicinePageState extends State<MedicinePage> {
+  final x = DataBaseClass();
+
+
+  void test() {
+     x.openTheDataBase();
+  }
+@override
+  void initState() {
+    super.initState();
+    test();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +41,17 @@ class _MedicinePageState extends State<MedicinePage> {
             padding: const EdgeInsets.all(12.0),
             child: Column(
               children: [
-                AddNewWidget(),
+                Container(
+                    height: 60,
+                    width: double.infinity,
+                    child: InputPopUp(inputDataType: 'medicine', medicineName: 'Add New Medicine',)),
                 Expanded(
                   flex: 1,
                     child: ListView.separated(
                        separatorBuilder: (BuildContext context, int index) => const Divider(),
-                       itemCount: 12,
+                       itemCount:medicineMap.length,
                        itemBuilder: (BuildContext context, int index) {
-                       return medicineCardName();
+                       return medicineCardName(testName: index+1);
                   },
                 ))
               ],

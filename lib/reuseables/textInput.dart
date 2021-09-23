@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget textInput(
     {required String labelText,
-    controller,
+    TextEditingController? controller,
       type,
 
       bool? noKeyBoard,

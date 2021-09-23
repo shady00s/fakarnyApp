@@ -36,7 +36,7 @@ class _MedicineGroupState extends State<MedicineGroup> {
                       child: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: ListView.separated(separatorBuilder: (BuildContext context ,int index)=>const Divider(),itemBuilder: (BuildContext context,int index){
-                          return medicineCardName();
+                          return medicineCardName(testName: index);
                         },  itemCount: 12),
                       ),
                     ),

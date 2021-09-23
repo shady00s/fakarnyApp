@@ -1,12 +1,12 @@
 import 'dart:async';
-
+import 'package:sqflite/sqflite.dart';
 import 'package:fakarny_app/components/side_menu.dart';
+import 'package:fakarny_app/dataBase/dataBase.dart';
 import 'package:fakarny_app/reuseables/popUp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
-import 'medicinePage.dart';
+
 
 class MainPageTablet extends StatefulWidget {
   const MainPageTablet({Key? key}) : super(key: key);
@@ -16,9 +16,21 @@ class MainPageTablet extends StatefulWidget {
 }
 
 class _MainPageTabletState extends State<MainPageTablet> {
+
+final x = DataBaseClass();
+
+void tester(){
+  x.openTheDataBase();
+}void tester2(){
+
+}
   var date = DateTime.now();
+
+
   @override
   void initState() {
+    tester();
+    tester2();
     // TODO: implement initState
     Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
@@ -31,6 +43,7 @@ class _MainPageTabletState extends State<MainPageTablet> {
 
   @override
   Widget build(BuildContext context) {
+
     var screenSize = MediaQuery.of(context).size;
     double containerHeight= 180;
     final _formKey = GlobalKey<FormState>();
