@@ -1,6 +1,6 @@
 # fakarny
 
-A new Flutter project.
+simple UI design for medicine reminder app.
 
 ## Getting Started
 
